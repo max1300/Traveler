@@ -4,9 +4,23 @@
 {% block title %}New Voyage{% endblock %}
 
 {% block body %}
-       
+      <style>
+    h1{
+        text-align:center;
+        font-size:50px;
+        padding-top:10%;
+        color:#8f8f8f;
+    }
 
-    <h1>Create new Voyage</h1>
+    button{
+        margin-right:1%;
+        margin-bottom:1%;
+    }
+</style>
+
+  <div class="container"> 
+
+    <h1>Création nouveau voyage</h1>
 
     {{ form_start(form) }}
 
@@ -22,7 +36,9 @@
 
     <button type="submit" class="btn btn-success btn-lg">Valider</button>
 
-    <a href="{{ path('admin_voyage_index') }}">back to list</a>
+    <button class= "btn btn-primary"> <a href="{{ path('admin_voyage_index') }}">back to list</a> </button>
+
+</div>
 
     {{ form_end(form) }}  
 {% endblock %}

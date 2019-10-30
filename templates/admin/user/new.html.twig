@@ -21,7 +21,7 @@
   <div class="container">  
     <h1>Création d'un nouvel utilisateur</h1>
  
-    {{ include('admin/user/_form.html.twig', { context: "NEW" }) }}
+    {{ include('admin/user/_form.html.twig') }}
 
     
     <button class= "btn btn-primary"> <a href="{{ path('admin_user_index') }}">back to list</a> </button>

@@ -4,12 +4,29 @@
 {% block title %}Voyage index{% endblock %}
 
 {% block body %}
-    <h1>Voyage index</h1>
+<style>
+    h1{
+        text-align:center;
+        font-size:50px;
+        padding-top:3%;
+        color:#8f8f8f;
+    }
+
+    a{
+        color:white;
+    }
+
+    a:hover{
+        color:black;
+    }
+</style>
+
+<div class="container"> 
+    <h1>Voyages</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nom</th>
                 <th>Description</th>
                 <th>Texte</th>
@@ -19,13 +36,12 @@
         <tbody>
         {% for voyage in voyages %}
             <tr>
-                <td>{{ voyage.id }}</td>
                 <td>{{ voyage.nom }}</td>
                 <td>{{ voyage.description }}</td>
                 <td>{{ voyage.texte }}</td>
                 <td>
-                    <a href="{{ path('admin_voyage_show', {'id': voyage.id}) }}">show</a>
-                    <a href="{{ path('admin_voyage_edit', {'id': voyage.id}) }}">edit</a>
+                    <button class= "btn btn-info btn-sm"> <a href="{{ path('admin_voyage_show', {'id': voyage.id}) }}">show</a> </button>
+                    <button class= "btn btn-info btn-sm"> <a href="{{ path('admin_voyage_edit', {'id': voyage.id}) }}">edit</a> </button>
                 </td>
             </tr>
         {% else %}
@@ -36,5 +52,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('admin_voyage_new') }}">Create new</a>
+    <button class= "btn btn-primary"> <a href="{{ path('admin_voyage_new') }}">Créer un nouveau voyage</a></button>
+
+</div>
 {% endblock %}

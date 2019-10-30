@@ -4,7 +4,25 @@
 {% block title %}Destinations index{% endblock %}
 
 {% block body %}
-    <h1>Destinations index</h1>
+<style>
+    h1{
+        text-align:center;
+        font-size:50px;
+        padding-top:3%;
+        color:#8f8f8f;
+    }
+
+    a{
+        color:white;
+    }
+
+    a:hover{
+        color:black;
+    }
+</style>
+
+<div class="container"> 
+    <h1>Destinations</h1>
 
     <table class="table">
         <thead>
@@ -12,8 +30,7 @@
                 <th>Ville</th>
                 <th>Lat</th>
                 <th>Lng</th>
-                <th>Id</th>
-                <th>Created_at</th>
+                <th>Créée le</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -23,11 +40,10 @@
                 <td>{{ destination.ville }}</td>
                 <td>{{ destination.lat }}</td>
                 <td>{{ destination.lng }}</td>
-                <td>{{ destination.id }}</td>
                 <td>{{ destination.createdAt ? destination.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('admin_destinations_show', {'id': destination.id}) }}">show</a>
-                    <a href="{{ path('admin_destinations_edit', {'id': destination.id}) }}">edit</a>
+                    <button class= "btn btn-info btn-sm"> <a href="{{ path('admin_destinations_show', {'id': destination.id}) }}">show</a> </button>
+                    <button class= "btn btn-info btn-sm"> <a href="{{ path('admin_destinations_edit', {'id': destination.id}) }}">edit</a> </button>
                 </td>
             </tr>
         {% else %}
@@ -38,5 +54,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('admin_destinations_new') }}">Create new</a>
+    <button class= "btn btn-primary"> <a href="{{ path('admin_destinations_new') }}">Créer une nouvelle destination</a></button>
+
+</div>
 {% endblock %}

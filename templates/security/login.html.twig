@@ -3,6 +3,20 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
+<style>
+    h1{
+        text-align:center;
+        font-size:50px;
+        padding-top:3%;
+        color:#8f8f8f;
+    }
+
+    button{
+        margin-right:1%;
+        margin-bottom:1%;
+    }
+</style>
+<div class="container">
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -14,7 +28,7 @@
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
     <label for="inputLogin" class="sr-only">Login</label>
     <input type="text" value="{{ last_username }}" name="login" id="inputLogin" class="form-control" placeholder="Login" required autofocus>
     <label for="inputPassword" class="sr-only">Password</label>
@@ -39,4 +53,5 @@
         Sign in
     </button>
 </form>
+</div>
 {% endblock %}
