@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Destinations index{% endblock %}
+
+{% block body %}
+    <h1>Destinations index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Ville</th>
+                <th>Lat</th>
+                <th>Lng</th>
+                <th>Id</th>
+                <th>Created_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for destination in destinations %}
+            <tr>
+                <td>{{ destination.ville }}</td>
+                <td>{{ destination.lat }}</td>
+                <td>{{ destination.lng }}</td>
+                <td>{{ destination.id }}</td>
+                <td>{{ destination.createdAt ? destination.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('admin_destinations_show', {'id': destination.id}) }}">show</a>
+                    <a href="{{ path('admin_destinations_edit', {'id': destination.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_destinations_new') }}">Create new</a>
+{% endblock %}

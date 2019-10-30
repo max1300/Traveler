@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}New Destinations{% endblock %}
+
+{% block body %}
+    
+
+    <h1>Create new Destination</h1>
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.ville, { 'attr': {'placeholder': 'entrez une ville'}}) }}
+
+    {{ form_row(form.lat, { 'attr': {'placeholder': 'entrez une latitude'}}) }}
+
+    {{ form_row(form.lng, { 'attr': {'placeholder': 'entrez une longitude'}}) }}
+
+    {{ form_row(form.pays)}}
+
+    <button type="submit" class="btn btn-success btn-lg">Valider</button>
+
+    <a href="{{ path('admin_destinations_index') }}">back to list</a>
+
+    {{ form_end(form) }} 
+
+    
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}New Voyage{% endblock %}
+
+{% block body %}
+       
+
+    <h1>Create new Voyage</h1>
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.nom, { 'attr': {'placeholder': 'entrez le nom de votre voyage'}}) }}
+
+    {{ form_row(form.description, { 'attr': {'placeholder': 'entrez une description courte'}}) }}
+
+    {{ form_row(form.texte, { 'attr': {'placeholder': 'entrez une description détaillée', 'rows': '8'}}) }}
+
+    {{ form_row(form.voyage)  }}
+
+    {{ form_row(form.photos)  }}
+
+    <button type="submit" class="btn btn-success btn-lg">Valider</button>
+
+    <a href="{{ path('admin_voyage_index') }}">back to list</a>
+
+    {{ form_end(form) }}  
+{% endblock %}
