@@ -1,0 +1,8 @@
+{% for role in roles %}
+    {% if role == "ROLE_ADMIN" %}
+        <span class="badge badge-pill badge-danger">ADMINISTRATEUR</span>
+    {% endif %}
+    {% if role == "ROLE_USER" %}
+        <span class="badge badge-pill badge-success">UTILISATEUR</span>
+    {% endif %}
+{% endfor %}
