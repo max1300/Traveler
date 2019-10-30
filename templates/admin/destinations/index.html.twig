@@ -40,7 +40,7 @@
                 <td>{{ destination.ville }}</td>
                 <td>{{ destination.lat }}</td>
                 <td>{{ destination.lng }}</td>
-                <td>{{ destination.createdAt ? destination.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ destination.createdAt ? destination.createdAt|date('d-m-Y') : '' }}</td>
                 <td>
                     <button class= "btn btn-info btn-sm"> <a href="{{ path('admin_destinations_show', {'id': destination.id}) }}">show</a> </button>
                     <button class= "btn btn-info btn-sm"> <a href="{{ path('admin_destinations_edit', {'id': destination.id}) }}">edit</a> </button>
