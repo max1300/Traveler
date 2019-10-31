@@ -38,7 +38,6 @@ class DestinationsController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $tab = $openStreet->createConn($destination->getVille() . ', ' .$destination->getPays()->getNom());
-            var_dump($tab);
             $latitude = $tab[0]['lat'];
             $longitude = $tab[0]['lon'];
             $destination->setLat($latitude);

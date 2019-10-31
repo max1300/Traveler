@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -8,13 +9,17 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://bootswatch.com/4/sandstone/bootstrap.min.css">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-              integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-              crossorigin=""/>
-        {% endblock %}
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+        crossorigin=""></script>
+   {% endblock %}
     </head>
 
     <body>
-        
+     
+   
 
         {% block nav %}
          <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -53,12 +58,14 @@
         {% endblock %}
 
         {% block body %}
+        <style type="text/css">
+        #mapid{ 
+            height:900px;
+        }
+    </style>
 
-            <style>
-                #maCarte { height: 900px; }
-            </style>
-
-            <div id="maCarte"></div>
+    <div id="mapid">
+    </div>
         {% endblock %}
 
         {% block footer %}
@@ -98,19 +105,15 @@
         </div
         {% endblock %}
         {% block javascripts %}
-            <script></script>
-            <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
-            <script> 
-                var carte = L.map('maCarte').setView([51.505, -0.09], 13);
-                L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                maxZoom: 18,
-                id: 'mapbox.streets',
-                accessToken: 'your.mapbox.access.token'
-            }).addTo(carte);
-            
-            
-            </script>
+     <script></script>             
+    <script type="text/javascript">
+        var map = L.map('mapid').setView([12.1191543, 15.0502758], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        
+    </script>
         {% endblock %}
+    
     </body>
 </html>
