@@ -6,6 +6,7 @@ use App\Entity\Destinations;
 use App\Entity\Photo;
 use App\Form\DestinationsType;
 use App\Repository\DestinationsRepository;
+use App\Service\OpenStreet;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,13 +30,19 @@ class DestinationsController extends AbstractController
     /**
      * @Route("/new", name="destinations_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, OpenStreet $openStreet): Response
     {
         $destination = new Destinations();
         $form = $this->createForm(DestinationsType::class, $destination);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $tab = $openStreet->createConn($destination->getVille() . ', ' .$destination->getPays()->getNom());
+            var_dump($tab);
+            $latitude = $tab[0]['lat'];
+            $longitude = $tab[0]['lon'];
+            $destination->setLat($latitude);
+            $destination->setLng($longitude);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($destination);
             $entityManager->flush();
