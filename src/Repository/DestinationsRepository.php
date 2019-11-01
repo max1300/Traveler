@@ -19,6 +19,16 @@ class DestinationsRepository extends ServiceEntityRepository
         parent::__construct($registry, Destinations::class);
     }
 
+    public function getDestinationsWithLatLng():array
+    {
+        return $this->createQueryBuilder('d')
+            ->where('d.lat IS NOT NULL')
+            ->andWhere('d.lng IS NOT NULL')
+            ->getQuery()
+            ->getResult();
+
+    }
+
     // /**
     //  * @return Destinations[] Returns an array of Destinations objects
     //  */

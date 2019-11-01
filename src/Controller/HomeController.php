@@ -12,11 +12,21 @@ class HomeController extends AbstractController
     /**
      * @Route("/home", name="home")
      */
-    public function index(Destinations $destinations = null)
+    public function index(DestinationsRepository $destRepo)
     {
+        $destinations = $destRepo->getDestinationsWithLatLng();
+        $destinationsView = [];
+
+        foreach($destinations as $destination){
+            $destinationsView[] = [
+                'lat' => $destination->getLat(),
+                'lng' => $destination->getLng(),
+                'ville' => $destination->getVille()
+            ];
+        }
         return $this->render('home/home.html.twig', [
             'controller_name' => 'HomeController',
-            'destinations' => $destinations,
+            'destinationsJs' => $destinationsView,
         ]);
     }
 }
